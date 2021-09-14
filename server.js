@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
     {
       title: "001 Test Article",
       createdAt: new Date(),
-      description: "Test Description!",
+      description: "001 Test Description!",
     },
     {
       title: "002 Test Article",
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
       description: "002 Test Description!",
     },
   ];
-  res.render("index", { articles });
+  res.render("articles/index", { articles });
 });
 
 app.listen(port, () => {
