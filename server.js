@@ -10,15 +10,19 @@ app.use("/articles", articleRouter);
 app.get("/", (req, res) => {
   const articles = [
     {
-      title: "Test Article",
-      createdAt: Date.now(),
+      title: "001 Test Article",
+      createdAt: new Date(),
       description: "Test Description!",
+    },
+    {
+      title: "002 Test Article",
+      createdAt: new Date(),
+      description: "002 Test Description!",
     },
   ];
   res.render("index", { articles });
 });
 
-// app.listen(6000);
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
