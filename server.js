@@ -25,7 +25,6 @@ app.get("/", (req, res) => {
   ];
   res.render("articles/index", { articles });
 });
-
 app.use("/articles", articleRouter);
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
