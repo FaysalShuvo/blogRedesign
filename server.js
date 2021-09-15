@@ -5,10 +5,10 @@ const app = express();
 
 const port = 8080;
 
-mongoose.connect("mongodb://localhost/blog");
+mongoose.connect("mongodb://127.0.0.1:27017/blog");
 
 app.set("view engine", "ejs");
-app.use("/articles", articleRouter);
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   const articles = [
@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
   res.render("articles/index", { articles });
 });
 
+app.use("/articles", articleRouter);
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
