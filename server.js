@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const Article = require("./models/article");
 const articleRouter = require("./routes/articles");
 const app = express();
 
@@ -10,19 +11,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/blog");
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
-  const articles = [
-    {
-      title: "001 Test Article",
-      createdAt: new Date(),
-      description: "001 Test Description!",
-    },
-    {
-      title: "002 Test Article",
-      createdAt: new Date(),
-      description: "002 Test Description!",
-    },
-  ];
+app.get("/", async (req, res) => {
+  const articles = await Article.find();
   res.render("articles/index", { articles });
 });
 app.use("/articles", articleRouter);
